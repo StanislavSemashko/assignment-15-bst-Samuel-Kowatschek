@@ -43,9 +43,9 @@ void delete_bst(Bst bst){
 *** @return The depth of the BST
 */
 int get_depth(Bst bst){
-  if(bst == 0) return 0;
-  if(bst->left == 0 || bst->right == 0) return 1;
-  return 2; 
+if (bst == 0)return 0;
+if(bst->left == 0 && bst->right == 0) return 1;
+return get_depth(left_subtree(bst)) + get_depth(right_subtree(bst));
 }
 
 /**
@@ -58,7 +58,7 @@ void add(Bst* bst, int value){
   newNode->left=0;
   if (*bst==0)
   {
-    (*bst)=newNode;
+    *bst=newNode;
     return;
   }
   else if(value<=(*bst)->value)
@@ -68,7 +68,7 @@ void add(Bst* bst, int value){
   else if(value>(*bst)->value)
   {
     (*bst)->right=newNode;
-}
+  }
 }
 
 /**
