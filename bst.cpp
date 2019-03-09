@@ -27,49 +27,71 @@ struct Node{
 *** @return The number of deleted nodes
 */
 Bst new_bst(){
-    Bst bst = (Bst)malloc(sizeof(Node));
-    bst -> right = 0;
-    bst -> left = 0;
-    bst -> value = 0;
+    Bst bst = 0;
+    return bst;
 }
 
 void delete_bst(Bst bst){
-    
+    if(bst != 0){
+      sfree(bst);
+      sfree(bst->right);
+      sfree(bst->left);
+    }
 }
 
 /**
 *** @return The depth of the BST
 */
 int get_depth(Bst bst){
-return 0;
+  if(bst == 0) return 0;
+  if(bst->left == 0 || bst->right == 0) return 1;
+  return 2; 
 }
 
 /**
 *** Adds a value to the BST
 */
 void add(Bst* bst, int value){
-
+  Bst newNode = (Bst)malloc(sizeof(Node));
+  newNode->value=value;
+  newNode->right=0;
+  newNode->left=0;
+  if (*bst==0)
+  {
+    (*bst)=newNode;
+    return;
+  }
+  else if(value<=(*bst)->value)
+  {
+    (*bst)->left=newNode;
+  }
+  else if(value>(*bst)->value)
+  {
+    (*bst)->right=newNode;
+}
 }
 
 /**
 *** @return The value of the root element of the BST
 */
 int root_value(Bst bst){
-return 0;
+  return bst->value;
 }
 
 /**
 *** @return The left subtree of the BST
 */
 Bst left_subtree(Bst root){
-return 0;
+  if(root->left == 0) return 0;
+  return root->left;
 }
 
 /**
 *** @return The right subtree of the BST
 */
 Bst right_subtree(Bst root){
-    return 0;
+    if(root->left == 0) return 0;
+    return root->right;
 }
 
 /**
