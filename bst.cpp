@@ -33,9 +33,9 @@ Bst new_bst(){
 
 void delete_bst(Bst bst){
     if(bst != 0){
+      delete_bst(bst->left);
+      delete_bst(bst->right);
       sfree(bst);
-      sfree(bst->right);
-      sfree(bst->left);
     }
 }
 
@@ -48,8 +48,8 @@ if (bst == 0)
 
 if(bst->right == 0 && bst->left == 0) 
   return 1;
-
-return get_depth(right_subtree(bst)) + get_depth(left_subtree(bst));
+if(get_depth(right_subtree(bst)) >  get_depth(left_subtree(bst))) return 1 + get_depth(right_subtree(bst));
+return 1 +get_depth(left_subtree(bst));
 }
 
 /**
