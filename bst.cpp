@@ -113,7 +113,16 @@ Bst right_subtree(Bst root){
 *** @return Number of elements found during traversal
 */
 int traverse_pre_order(Bst bst, int *elements, int start){
-    return 0;
+     if(bst != 0) {
+      elements[start] = bst->value;
+      if(get_depth(bst) > 0){
+        start+=1;
+        start = traverse_pre_order(bst->left, elements, start);
+        start = traverse_pre_order(bst->right, elements, start);
+      }
+      return start;
+   }
+   return start;
 }
 
 /**
