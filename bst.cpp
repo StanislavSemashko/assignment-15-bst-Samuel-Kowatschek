@@ -90,7 +90,6 @@ int root_value(Bst bst){
 *** @return The left subtree of the BST
 */
 Bst left_subtree(Bst root){
-  if(root->left == 0) return 0;
   return root->left;
 }
 
@@ -98,7 +97,6 @@ Bst left_subtree(Bst root){
 *** @return The right subtree of the BST
 */
 Bst right_subtree(Bst root){
-    if(root->left == 0) return 0;
     return root->right;
 }
 
