@@ -43,10 +43,12 @@ void delete_bst(Bst bst){
 *** @return The depth of the BST
 */
 int get_depth(Bst bst){
-if (bst == 0)return 0;
-else if(bst->right == 0 && bst->left == 0) return 1;
-else if(bst->right == 0) return get_depth(left_subtree(bst));
-else if(bst->left == 0) return get_depth(right_subtree(bst));
+if (bst == 0)
+  return 0;
+
+if(bst->right == 0 && bst->left == 0) 
+  return 1;
+
 return get_depth(right_subtree(bst)) + get_depth(left_subtree(bst));
 }
 
