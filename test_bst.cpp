@@ -72,7 +72,7 @@ TEST(add_many)
 	Bst bst = new_bst();
 	add_all_elements(&bst);
 
-	ASSERT_EQUALS(5, get_depth(bst));
+	ASSERT_EQUALS(5, get_depth(bst));				
 	ASSERT_EQUALS(3, get_depth(left_subtree(bst)));
 	ASSERT_EQUALS(4, get_depth(right_subtree(bst)));
 

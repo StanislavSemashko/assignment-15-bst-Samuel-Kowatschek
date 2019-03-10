@@ -56,10 +56,10 @@ void add(Bst* bst, int value){
   newNode->value=value;
   newNode->right=0;
   newNode->left=0;
+
   if (*bst==0)
   {
     *bst=newNode;
-    return;
   }
   else if(value<=(*bst)->value)
   {
