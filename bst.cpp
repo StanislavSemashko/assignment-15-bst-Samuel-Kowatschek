@@ -63,11 +63,19 @@ void add(Bst* bst, int value){
   }
   else if(value<=(*bst)->value)
   {
+    if((*bst)->left == 0){
     (*bst)->left=newNode;
+    }else{
+      add(&(*bst)->left, value);
+    }
   }
   else if(value>(*bst)->value)
   {
-    (*bst)->right=newNode;
+    if((*bst)->right == 0){
+      (*bst)->right=newNode;
+    }else{
+      add(&(*bst)->right, value);
+    }
   }
 }
 
