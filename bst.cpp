@@ -175,6 +175,13 @@ int traverse_post_order(Bst bst, int *elements, int start){
 *** @return true if bst1 and bst2 are equal, false otherwise
 */
 bool are_equal(Bst bst1, Bst bst2){
+    if(bst1 == 0){
+      return bst2 == 0;
+    }else if(get_depth(bst1) == get_depth(bst2)){
+      if(bst1->value == bst2->value){
+        return are_equal(bst1->left, bst2->left) && are_equal(bst1->right, bst2->right);
+      }
+    }
     return false;
 }
 
