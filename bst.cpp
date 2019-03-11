@@ -68,7 +68,7 @@ void add(Bst* bst, int value){
   else if(value<=(*bst)->value)
   {
     if((*bst)->left == 0){
-    (*bst)->left=newNode;
+      (*bst)->left=newNode;
     }else{
       add(&(*bst)->left, value);
     }
