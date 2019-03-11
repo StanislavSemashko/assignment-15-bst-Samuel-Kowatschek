@@ -136,7 +136,7 @@ int traverse_in_order(Bst bst, int *elements, int start){
       if(bst != 0) {
       if(bst->left != 0){ start = traverse_in_order(bst, elements, start);}
       elements[start] = bst->value;
-      start++;
+      start+=1;
       if(bst->right != 0){ start = traverse_in_order(bst, eleemnts, start);}          
    }
    return start;
