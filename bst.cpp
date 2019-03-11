@@ -157,10 +157,10 @@ int traverse_in_order(Bst bst, int *elements, int start){
 int traverse_post_order(Bst bst, int *elements, int start){
     if(bst != 0) {
       if(bst->left != 0){
-        start = traverse_in_order(bst->left, elements, start);
+        start = traverse_post_order(bst->left, elements, start);
       }
       if(bst->right != 0){ 
-        start = traverse_in_order(bst->right, elements, start);
+        start = traverse_post_order(bst->right, elements, start);
       }
       elements[start] = bst->value;
       start+=1;          
