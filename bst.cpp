@@ -52,23 +52,29 @@ if(get_depth(right_subtree(bst)) >  get_depth(left_subtree(bst))) return 1 + get
 return 1 +get_depth(left_subtree(bst));
 }
 
-/**
-*** Adds a value to the BST
-*/
-void add(Bst* bst, int value){
+Bst create_node(Bst* bst, int value){
   Bst newNode = (Bst)malloc(sizeof(Node));
   newNode->value=value;
   newNode->right=0;
   newNode->left=0;
+  return newNode;
+}
+
+
+/**
+*** Adds a value to the BST
+*/
+void add(Bst* bst, int value){
+  
 
   if (*bst==0)
   {
-    *bst=newNode;
+    *bst = create_node(&(*bst), value);
   }
   else if(value<=(*bst)->value)
   {
     if((*bst)->left == 0){
-      (*bst)->left=newNode;
+      (*bst)->left=create_node(&(*bst), value);
     }else{
       add(&(*bst)->left, value);
     }
@@ -76,7 +82,7 @@ void add(Bst* bst, int value){
   else if(value>(*bst)->value)
   {
     if((*bst)->right == 0){
-      (*bst)->right=newNode;
+      (*bst)->right=create_node(&(*bst), value);
     }else{
       add(&(*bst)->right, value);
     }
@@ -193,7 +199,7 @@ bool are_equal(Bst bst1, Bst bst2){
 *** branch of bst
 */
 void most_left_longest_branch(Bst bst, Bst* branch){
-
+  
 }
 
 /**
