@@ -202,5 +202,8 @@ void most_left_longest_branch(Bst bst, Bst* branch){
 *** @return The number of non-empty subtrees
 */
 int get_number_of_subtrees(Bst bst){
-    return 0;
+    if(bst == 0) return -1;
+    if(bst->left == 0 && bst->right == 0) return 0;
+    if(bst->left == 0 || bst->right == 0) return 1;
+    return 2;
 }
