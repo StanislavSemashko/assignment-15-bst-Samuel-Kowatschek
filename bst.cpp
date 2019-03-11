@@ -120,7 +120,6 @@ int traverse_pre_order(Bst bst, int *elements, int start){
         start = traverse_pre_order(bst->left, elements, start);
         start = traverse_pre_order(bst->right, elements, start);
       }
-      return start;
    }
    return start;
 }
@@ -134,7 +133,13 @@ int traverse_pre_order(Bst bst, int *elements, int start){
 *** @return Number of elements found during traversal
 */
 int traverse_in_order(Bst bst, int *elements, int start){
-    return 0;
+      if(bst != 0) {
+      if(bst->left != 0){ start = traverse_in_order(bst, elements, start);}
+      elements[start] = bst->value;
+      start++;
+      if(bst->right != 0){ start = traverse_in_order(bst, eleemnts, start);}          
+   }
+   return start;
 }
 
 /**
