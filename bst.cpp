@@ -43,14 +43,15 @@ void delete_bst(Bst bst){
 *** @return The depth of the BST
 */
 int get_depth(Bst bst){
-if (bst == 0)
-  return 0;
+  if (bst == 0)
+    return 0;
 
-if(bst->right == 0 && bst->left == 0) 
-  return 1;
-if(get_depth(right_subtree(bst)) >  get_depth(left_subtree(bst))) return 1 + get_depth(right_subtree(bst));
-return 1 +get_depth(left_subtree(bst));
+  if(bst->right == 0 && bst->left == 0) 
+    return 1;
+  if(get_depth(right_subtree(bst)) >  get_depth(left_subtree(bst))) return 1 + get_depth(right_subtree(bst));
+  return 1 +get_depth(left_subtree(bst));
 }
+
 
 Bst create_node(Bst* bst, int value){
   Bst newNode = (Bst)malloc(sizeof(Node));
@@ -60,13 +61,10 @@ Bst create_node(Bst* bst, int value){
   return newNode;
 }
 
-
 /**
 *** Adds a value to the BST
 */
 void add(Bst* bst, int value){
-  
-
   if (*bst==0)
   {
     *bst = create_node(&(*bst), value);
@@ -199,6 +197,15 @@ bool are_equal(Bst bst1, Bst bst2){
 *** branch of bst
 */
 void most_left_longest_branch(Bst bst, Bst* branch){
+  if(bst != 0){
+    if(get_depth(bst->right) > get_depth(bst->left)){
+      add(branch, bst->right->value);
+      most_left_longest_branch(&(*bst->right), branch);
+    }else if(get_depth(bst->right) == get_depth(bst->left) || get_depth(bst->right) < get_depth(bst->left)){
+      add(branch, bst->left->value);
+      most_left_longest_branch(&(*bst->left), branch);
+    }
+  }
   
 }
 
