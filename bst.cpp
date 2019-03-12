@@ -202,14 +202,31 @@ void most_left_longest_branch(Bst bst, Bst* branch){
   
 }
 
+
+int find_subtree_count(Bst bst, int count){
+  if(bst != 0){
+    if(bst->left == 0 && bst->right == 0) return count;
+    if(bst->left == 0 && bst->right != 0){
+      count+=1;
+      count = find_subtree_count(bst->right, count);
+    }else if(bst->left != 0 && bst->right == 0){
+      count+=1;
+      count = find_subtree_count(bst->left, count);
+    }else{
+      count+=2;
+      count = find_subtree_count(bst->left, count);
+      count = find_subtree_count(bst->right, count);
+    }
+  }
+  
+  return count;
+}
+
 /**
 *** Gets the number of non-empty subtrees of a tree
 *** @param bst The tree which number of subtrees to get
 *** @return The number of non-empty subtrees
 */
 int get_number_of_subtrees(Bst bst){
-    if(bst == 0) return -1;
-    if(bst->left == 0 && bst->right == 0) return 0;
-    if(bst->left == 0 || bst->right == 0) return 1;
-    return 2;
+  return find_subtree_count(bst, 0);
 }
