@@ -199,10 +199,10 @@ bool are_equal(Bst bst1, Bst bst2){
 void most_left_longest_branch(Bst bst, Bst* branch){
   if(bst != 0){
     if(get_depth(bst->right) > get_depth(bst->left)){
-      add(branch, bst->right->value);
+      add(branch, bst->value);
       most_left_longest_branch(&(*bst->right), branch);
     }else if(get_depth(bst->right) == get_depth(bst->left) || get_depth(bst->right) < get_depth(bst->left)){
-      add(branch, bst->left->value);
+      add(branch, bst->value);
       most_left_longest_branch(&(*bst->left), branch);
     }
   }
@@ -224,9 +224,9 @@ int find_subtree_count(Bst bst, int count){
       count = find_subtree_count(bst->left, count);
       count = find_subtree_count(bst->right, count);
     }
+    return count;
   }
-  
-  return count;
+  return -1;
 }
 
 /**
